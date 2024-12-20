@@ -1,0 +1,89 @@
+<!-- shadowapp/templates/shadowapp/view_logs.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Logs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            color: #555;
+            margin-top: 30px;
+        }
+
+        ul {
+            margin: 20px;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        li {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        li:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Error Logs</h1>
+
+    <!-- Display Logs -->
+    <ul>
+        {% for log in logs %}
+        <li>{{ log.timestamp }} - {{ log.error_type }} - Status: {{ log.status_code }} - {{ log.message }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Error Status Codes Graph</h2>
+    <img src="data:image/png;base64,{{ graph_url }}" alt="Error Status Code Graph">
+
+    <br><br>
+    <a href="/">Back to Home</a>
+</body>
+
+</html>
